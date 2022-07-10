@@ -64,8 +64,8 @@ app.put('/tasks/:id', async (req, res) => {
     done
   }
   try {
-    const updatedTask = await tasks.update({ where: { id: taskId }, task })
-    //No consegui tomar el id y eso que anteriormente lo consegui usando este metodo (falta tomar el id para hacer la seleccion de la task que va a ser eliminada)
+    const updatedTask = await tasks.update(req.body, { where: { id: taskId }})
+    //Esta listo.puedes testar ela alteracion
 
     if(updatedTask.matchedCount === 0) {
       res.status(422).json({ message: 'This task does not exists!' })
