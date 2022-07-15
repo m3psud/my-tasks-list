@@ -70,7 +70,7 @@ app.put('/tasks/:id', async (req, res) => {
 
     res.status(200).send({
       action: 'Updating task',
-      Task
+      task
     })
   } catch (error) {
     res.status(500).json({ error: error + ". Ups! Something wrong..." })
