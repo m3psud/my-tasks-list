@@ -64,17 +64,13 @@ app.put('/tasks/:id', async (req, res) => {
     done
   }
   try {
-    const updatedTask = await tasks.update(req.body, { where: { id: taskId }})
+    const Task = await tasks.update(task, { where: { id: taskId }})
     //Esta listo.puedes testar ela alteracion
 
-    if(updatedTask.matchedCount === 0) {
-      res.status(422).json({ message: 'This task does not exists!' })
-      return
-    }
 
     res.status(200).send({
       action: 'Updating task',
-      updatedTask
+      Task
     })
   } catch (error) {
     res.status(500).json({ error: error + ". Ups! Something wrong..." })
